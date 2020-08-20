@@ -7,14 +7,12 @@ String credentialssh = 'PersonalGithub'
         displayName ('Jobs DSL folder')
     }
 
-    job('Job as Code/my pipeline'){
-        scm {
-            git{
-               remote{
-                   url ("${repo}")
-                   credentials ("${credentialssh}")
-               }   
-            branches ("master")
+    pipelineJob('Job as Code/my pipeline'){
+        definition{
+            cpsScm{
+                scm {
+                    git("${repo}") 
+                }  
             }
         }
         
